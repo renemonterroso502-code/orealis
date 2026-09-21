@@ -1,7 +1,7 @@
 // Cada destinatario tiene su propio teléfono y apikey de CallMeBot
 const DESTINATARIOS = [
   { phone: "50230138000", apikey: "2083166" },
-  { phone: "502XXXXXXXX2", apikey: "APIKEY_2" },
+  { phone: "50256927760", apikey: "6786144" },
   { phone: "502XXXXXXXX3", apikey: "APIKEY_3" },
   { phone: "502XXXXXXXX4", apikey: "APIKEY_4" },
 ];
