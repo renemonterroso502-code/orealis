@@ -131,13 +131,78 @@ let productos = [];
 
 
 // ===============================
-// Vista previa imagen
+// Vista previa imagen (comprimida)
 // ===============================
+
+// Firestore no permite guardar más de ~1MB en un solo campo,
+// así que antes de guardar la imagen la redimensionamos y
+// comprimimos con un canvas.
+
+const ANCHO_MAXIMO = 900;
+const CALIDAD_JPEG = 0.7;
+
+
+function comprimirImagen(archivo){
+
+return new Promise((resolve, reject) => {
+
+const lector = new FileReader();
+
+lector.onload = function(e){
+
+const img = new Image();
+
+img.onload = function(){
+
+let ancho = img.width;
+let alto = img.height;
+
+if(ancho > ANCHO_MAXIMO){
+alto = Math.round(alto * (ANCHO_MAXIMO / ancho));
+ancho = ANCHO_MAXIMO;
+}
+
+const canvas = document.createElement("canvas");
+canvas.width = ancho;
+canvas.height = alto;
+
+const ctx = canvas.getContext("2d");
+ctx.drawImage(img, 0, 0, ancho, alto);
+
+let calidad = CALIDAD_JPEG;
+let resultado = canvas.toDataURL("image/jpeg", calidad);
+
+// Si aún pesa mucho, bajamos la calidad hasta que quepa
+// cómodamente dentro del límite de Firestore (1MB por campo).
+const LIMITE_BYTES = 700000;
+
+while(resultado.length > LIMITE_BYTES && calidad > 0.3){
+calidad -= 0.1;
+resultado = canvas.toDataURL("image/jpeg", calidad);
+}
+
+resolve(resultado);
+
+};
+
+img.onerror = reject;
+
+img.src = e.target.result;
+
+};
+
+lector.onerror = reject;
+
+lector.readAsDataURL(archivo);
+
+});
+
+}
 
 
 inputImagen.addEventListener(
 "change",
-()=>{
+async ()=>{
 
 
 let archivo =
@@ -147,28 +212,30 @@ inputImagen.files[0];
 if(archivo){
 
 
-let lector =
-new FileReader();
+try{
 
-
-lector.onload =
-function(e){
-
+const dataUrlComprimido =
+await comprimirImagen(archivo);
 
 vista.src =
-e.target.result;
-
+dataUrlComprimido;
 
 vista.style.display =
 "block";
 
+}
+catch(error){
+
+console.error(
+"Error al procesar la imagen:",
+error
+);
+
+alert(
+"No se pudo procesar esa imagen. Intenta con otra."
+);
 
 }
-
-
-lector.readAsDataURL(
-archivo
-);
 
 
 }
