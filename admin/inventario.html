@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Inventario - Oréalis
+</title>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/admin.css">
+
+
+</head>
+
+
+<body>
+
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+
+<h3 class="logo">
+
+<i class="fa-solid fa-gem"></i>
+
+Oréalis
+
+</h3>
+
+
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Dashboard
+
+</a>
+
+
+<a href="productos.html">
+
+<i class="fa-solid fa-shirt"></i>
+
+Productos
+
+</a>
+
+
+<a href="inventario.html">
+
+<i class="fa-solid fa-boxes-stacked"></i>
+
+Inventario
+
+</a>
+
+
+<a href="ventas.html">
+
+<i class="fa-solid fa-money-bill"></i>
+
+Ventas
+
+</a>
+
+
+<a href="clientes.html">
+
+<i class="fa-solid fa-users"></i>
+
+Clientes
+
+</a>
+
+
+<hr>
+
+
+<a href="../index.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Salir
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- CONTENIDO -->
+
+<div class="content">
+
+
+
+<nav class="navbar bg-white shadow-sm">
+
+
+<div class="container-fluid">
+
+
+<h4>
+
+Control de Inventario
+
+</h4>
+
+
+</div>
+
+
+</nav>
+
+
+
+
+
+
+<div class="container-fluid mt-4">
+
+
+
+
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+
+<h4>
+
+<i class="fa-solid fa-boxes-stacked"></i>
+
+Productos en Inventario
+
+</h4>
+
+
+<input 
+type="text"
+id="buscarInventario"
+class="form-control"
+style="max-width:300px"
+placeholder="Buscar producto...">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="table-responsive">
+
+
+
+<table class="table table-hover">
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Imagen
+</th>
+
+
+<th>
+Producto
+</th>
+
+
+<th>
+Stock
+</th>
+
+
+<th>
+Estado
+</th>
+
+
+<th>
+Entrada
+</th>
+
+
+<th>
+Salida
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="tablaInventario">
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<script type="module" src="js/inventario.js"></script>
+
+</body>
+
+</html>

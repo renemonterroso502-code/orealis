@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clientes | Oréalis</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- CSS del administrador -->
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <div class="container-fluid py-4">
+
+        <!-- ENCABEZADO -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+                <h1>
+                    <i class="fa-solid fa-users"></i>
+                    Clientes
+                </h1>
+
+                <p class="text-muted mb-0">
+                    Clientes registrados en el sistema
+                </p>
+            </div>
+
+            <a href="dashboard.html" class="btn btn-secondary">
+                <i class="fa-solid fa-arrow-left"></i>
+                Regresar
+            </a>
+
+        </div>
+
+
+        <!-- RESUMEN -->
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+
+                        <div class="d-flex align-items-center">
+
+                            <div class="me-3">
+                                <i class="fa-solid fa-users fa-2x"></i>
+                            </div>
+
+                            <div>
+                                <small class="text-muted">
+                                    Total de clientes
+                                </small>
+
+                                <h3 id="totalClientes">
+                                    0
+                                </h3>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUSCADOR -->
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body">
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-search"></i>
+                    </span>
+
+                    <input
+                        type="text"
+                        id="buscarCliente"
+                        class="form-control"
+                        placeholder="Buscar por nombre, correo o teléfono..."
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLA -->
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle">
+
+                        <thead class="table-dark">
+
+                            <tr>
+
+                                <th>#</th>
+
+                                <th>
+                                    <i class="fa-solid fa-user"></i>
+                                    Nombre
+                                </th>
+
+                                <th>
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Correo
+                                </th>
+
+                                <th>
+                                    <i class="fa-solid fa-phone"></i>
+                                    Teléfono
+                                </th>
+
+                                <th>
+                                    <i class="fa-solid fa-calendar"></i>
+                                    Fecha de registro
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tablaClientes">
+
+                            <tr>
+
+                                <td colspan="5" class="text-center">
+
+                                    <div class="spinner-border" role="status">
+                                    </div>
+
+                                    <p class="mt-2">
+                                        Cargando clientes...
+                                    </p>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script type="module" src="js/clientes.js"></script>
+
+</body>
+
+</html>
