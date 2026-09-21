@@ -290,3 +290,38 @@ formulario.reset();
 
 
 });
+
+// ===== Chat de bienvenida WhatsApp =====
+(function () {
+
+  const NUMERO = "50248975506"; // número del negocio
+
+  const plantilla =
+    "Hola! Quiero hacer un pedido.\n\n" +
+    "1️⃣ Nombre completo: \n" +
+    "2️⃣ Productos que deseo: \n" +
+    "3️⃣ Dirección de entrega o método de recepción: ";
+
+  const enlace = `https://wa.me/${NUMERO}?text=${encodeURIComponent(plantilla)}`;
+
+  const chat = document.getElementById("chatBienvenida");
+  const btnFlotante = document.getElementById("btnWhatsapp");
+  const btnResponder = document.getElementById("chatResponder");
+  const btnCerrar = document.getElementById("chatCerrar");
+
+  if (!chat) return;
+
+  btnFlotante.href = enlace;
+  btnResponder.href = enlace;
+
+  // Aparece 2 segundos después de entrar, una vez por sesión
+  if (!sessionStorage.getItem("chatVisto")) {
+    setTimeout(() => chat.classList.add("visible"), 2000);
+  }
+
+  btnCerrar.addEventListener("click", () => {
+    chat.classList.remove("visible");
+    sessionStorage.setItem("chatVisto", "1");
+  });
+
+})();
